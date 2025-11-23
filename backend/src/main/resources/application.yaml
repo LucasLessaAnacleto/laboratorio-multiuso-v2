@@ -1,12 +1,15 @@
 spring:
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
   datasource:
-    url: jdbc:mysql://localhost:3306/lab_multiuso
+    url: jdbc:mysql://localhost:3307/lab_multiuso
     username: root
-    driverClassName: com.mysql.cj.jdbc.Driver
+    password: 3307
