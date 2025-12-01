@@ -1,0 +1,561 @@
+{
+	"info": {
+		"_postman_id": "58005263-37af-4f73-9433-be56cd9b66e9",
+		"name": "lab-multiuso-v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31383903"
+	},
+	"item": [
+		{
+			"name": "anexo",
+			"item": [
+				{
+					"name": "novo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "anexo",
+									"type": "file",
+									"src": "/E:/Git Lucas/WebSites/Projeto-The-Last-of-Us/src/images/instagram.svg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/anexo/upload/novo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anexo",
+								"upload",
+								"novo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/anexo/download/instagram.svg",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"anexo",
+								"download",
+								"instagram.svg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "espaco",
+			"item": [
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Laboratório Química IFSC\",\r\n    \"descricao\": \"Laboratório de Química IFSC Criciuma, ensino médio Intituição Federal\",\r\n    \"endereco\": \"Cidade Criciuma, Rua 01\",\r\n    \"departamento\": \"Química\",\r\n    \"contato\": \"4991223344\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/espaco/criar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"espaco",
+								"criar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/espaco/buscar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"espaco",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "pesquisa",
+									"value": "senac",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/espaco/deletar/43d932cd-dcb2-4f70-b79b-01620dd9babb",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"espaco",
+								"deletar",
+								"43d932cd-dcb2-4f70-b79b-01620dd9babb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Laboratório 01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/espaco/atualizar/43d932cd-dcb2-4f70-b79b-01620dd9babb",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"espaco",
+								"atualizar",
+								"43d932cd-dcb2-4f70-b79b-01620dd9babb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/espaco/buscar/238a345d-dd93-45af-8eeb-cff990d38db9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"espaco",
+								"buscar",
+								"238a345d-dd93-45af-8eeb-cff990d38db9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "equipamento",
+			"item": [
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Equipamento de Informática\",\r\n    \"descricao\": \"Computador desktop de mesa 256gb\",\r\n    \"categoria\": \"Aparelho Eletrônico\",\r\n    \"patrimonio\": \"1235435634\",\r\n    \"espacoId\": \"92314a75-286b-449e-b561-05afdf7082a4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/equipamento/criar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamento",
+								"criar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/equipamento/buscar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamento",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "pesqui",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/equipamento/deletar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamento",
+								"deletar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Equipamento de Tecnologia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/equipamento/atualizar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamento",
+								"atualizar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/equipamento/buscar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamento",
+								"buscar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/equipamento/categorias",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamento",
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reserva",
+			"item": [
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricaoReserva\": \"Fazer pesquisa extra curricular de um esqueleto\",\r\n    \"dataReserva\": \"2025-12-01T17:00:00\",\r\n    \"duracao\": 3600,\r\n    \"espacoId\": \"05adc9e1-1773-4ef6-8cf6-72e9edbbc3f8\",\r\n    \"dataCancelamento\": \"2025-12-01T15:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/reserva/criar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reserva",
+								"criar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/reserva/buscar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reserva",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "pesqui",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por espaco",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/reserva/buscar/espaco/05adc9e1-1773-4ef6-8cf6-72e9edbbc3f8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reserva",
+								"buscar",
+								"espaco",
+								"05adc9e1-1773-4ef6-8cf6-72e9edbbc3f8"
+							],
+							"query": [
+								{
+									"key": "pesqui",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/reserva/deletar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reserva",
+								"deletar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricaoReserva\": \"Fazer o projeto integrador da terceira fase de ADS\",\r\n    \"dataReserva\": \"2025-12-01T17:00:00\",\r\n    \"duracao\": 3600,\r\n    \"espacoId\": \"05adc9e1-1773-4ef6-8cf6-72e9edbbc3f8\",\r\n    \"dataCancelamento\": \"2025-12-01T22:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/reserva/atualizar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reserva",
+								"atualizar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/reserva/buscar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reserva",
+								"buscar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "disponiveis por espaco",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/reserva/disponiveis/espaco/05adc9e1-1773-4ef6-8cf6-72e9edbbc3f8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reserva",
+								"disponiveis",
+								"espaco",
+								"05adc9e1-1773-4ef6-8cf6-72e9edbbc3f8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "agenda",
+			"item": [
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agenda/92314a75-286b-449e-b561-05afdf7082a4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda",
+								"92314a75-286b-449e-b561-05afdf7082a4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "disponiveis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agenda/05adc9e1-1773-4ef6-8cf6-72e9edbbc3f8/disponiveis",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda",
+								"05adc9e1-1773-4ef6-8cf6-72e9edbbc3f8",
+								"disponiveis"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
