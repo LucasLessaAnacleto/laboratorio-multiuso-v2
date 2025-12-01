@@ -1,8 +1,7 @@
 package com.extensao.senac.backend.modelos;
 
-import java.util.UUID;
+import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,13 +9,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class Espaco {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id;
 
     @Column
     private String nome;
@@ -27,7 +27,7 @@ public class Espaco {
     @Column
     private String endereco;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "imagem_capa", nullable = true)
     private Anexo imagemCapa;
 
@@ -49,11 +49,22 @@ public class Espaco {
     @Column
     private String andar;
 
-    public UUID getId() {
+    @Column
+    private String contato;
+
+    @OneToMany(mappedBy = "espaco")
+    private List<Equipamento> equipamentos;
+
+    @OneToMany(mappedBy = "espaco")
+    private List<Reserva> reservas;
+
+    // Getters and Setters
+
+    public String getId() {
         return this.id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -139,6 +150,14 @@ public class Espaco {
 
     public void setAndar(String andar) {
         this.andar = andar;
+    }
+
+    public String getContato() {
+        return this.contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
     }
 
 }

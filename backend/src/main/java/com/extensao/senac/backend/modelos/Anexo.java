@@ -35,6 +35,8 @@ public class Anexo {
     @Basic(fetch = FetchType.LAZY) 
     private byte[] contentBlob;
 
+    // Getters and Setters
+    
     public String getNomeAnexo() {
         return this.nomeAnexo;
     }

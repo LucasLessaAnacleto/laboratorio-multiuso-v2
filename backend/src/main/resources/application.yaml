@@ -1,7 +1,4 @@
 spring:
-  flyway:
-    enabled: true
-    locations: classpath:db/migration
   servlet:
     multipart:
       max-file-size: 30MB
@@ -10,6 +7,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3307/lab_multiuso
+    url: jdbc:mysql://localhost:3307/lab_multiuso?sessionVariables=cte_max_recursion_depth=5000
     username: root
     password: 3307

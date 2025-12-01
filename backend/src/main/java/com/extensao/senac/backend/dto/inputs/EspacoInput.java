@@ -1,6 +1,6 @@
-package com.extensao.senac.backend.api.dto.input;
+package com.extensao.senac.backend.dto.inputs;
 
-public class CadastroEspaco {
+public class EspacoInput {
 
     private String nome;
 
@@ -18,12 +18,15 @@ public class CadastroEspaco {
 
     private String andar;
 
-    private String imagemCapa;
+    private String nomeImagemCapa;
+
+    private String contato;
 
     // GETTERS E SETTERS
 
+
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -31,7 +34,7 @@ public class CadastroEspaco {
     }
 
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -39,7 +42,7 @@ public class CadastroEspaco {
     }
 
     public String getEndereco() {
-        return endereco;
+        return this.endereco;
     }
 
     public void setEndereco(String endereco) {
@@ -47,7 +50,7 @@ public class CadastroEspaco {
     }
 
     public String getDisponibilidade() {
-        return disponibilidade;
+        return this.disponibilidade;
     }
 
     public void setDisponibilidade(String disponibilidade) {
@@ -55,7 +58,7 @@ public class CadastroEspaco {
     }
 
     public String getDepartamento() {
-        return departamento;
+        return this.departamento;
     }
 
     public void setDepartamento(String departamento) {
@@ -63,7 +66,7 @@ public class CadastroEspaco {
     }
 
     public String getPoliticaUso() {
-        return politicaUso;
+        return this.politicaUso;
     }
 
     public void setPoliticaUso(String politicaUso) {
@@ -71,7 +74,7 @@ public class CadastroEspaco {
     }
 
     public String getSala() {
-        return sala;
+        return this.sala;
     }
 
     public void setSala(String sala) {
@@ -79,10 +82,27 @@ public class CadastroEspaco {
     }
 
     public String getAndar() {
-        return andar;
+        return this.andar;
     }
 
     public void setAndar(String andar) {
         this.andar = andar;
     }
+
+    public String getNomeImagemCapa() {
+        return this.nomeImagemCapa;
+    }
+
+    public void setNomeImagemCapa(String nomeImagemCapa) {
+        this.nomeImagemCapa = nomeImagemCapa;
+    }
+
+    public String getContato() {
+        return this.contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+   
 }
