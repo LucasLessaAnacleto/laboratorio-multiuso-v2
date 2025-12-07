@@ -693,7 +693,7 @@
 			"name": "usuario",
 			"item": [
 				{
-					"name": "cadastrar",
+					"name": "criar",
 					"request": {
 						"method": "POST",
 						"header": [],
