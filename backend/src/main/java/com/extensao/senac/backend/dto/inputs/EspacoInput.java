@@ -8,7 +8,7 @@ public class EspacoInput {
 
     private String endereco; 
 
-    private String disponibilidade;
+    private Boolean disponivel;
 
     private String departamento;
 
@@ -49,12 +49,12 @@ public class EspacoInput {
         this.endereco = endereco;
     }
 
-    public String getDisponibilidade() {
-        return this.disponibilidade;
+    public Boolean getDisponivel() {
+        return this.disponivel;
     }
 
-    public void setDisponibilidade(String disponibilidade) {
-        this.disponibilidade = disponibilidade;
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
     }
 
     public String getDepartamento() {

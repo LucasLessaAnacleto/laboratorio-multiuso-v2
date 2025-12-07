@@ -86,12 +86,12 @@ public class EspacoServico {
             espacoResult.setPoliticaUso(espacoInput.getPoliticaUso() != null ? espacoInput.getPoliticaUso() : espacoResult.getPoliticaUso());
             espacoResult.setSala(espacoInput.getSala() != null ? espacoInput.getSala() : espacoResult.getSala());
             espacoResult.setAndar(espacoInput.getAndar() != null ? espacoInput.getAndar() : espacoResult.getAndar());
-            espacoResult.setDisponibilidade(espacoInput.getDisponibilidade() != null ? espacoInput.getDisponibilidade() : espacoResult.getDisponibilidade());
+            espacoResult.setDisponivel(espacoInput.getDisponivel() != null ? espacoInput.getDisponivel() : espacoResult.getDisponivel());
             espacoResult.setDepartamento(espacoInput.getDepartamento() != null ? espacoInput.getDepartamento() : espacoResult.getDepartamento());
             espacoResult.setContato(espacoInput.getContato() != null ? espacoInput.getContato() : espacoResult.getContato());
     
             if(espacoInput.getNomeImagemCapa() != null && !espacoInput.getNomeImagemCapa().isEmpty()){
-                Anexo imagemCapa = anexoServico.buscarAnexo(espacoInput.getNomeImagemCapa());
+            Anexo imagemCapa = anexoServico.buscarAnexo(espacoInput.getNomeImagemCapa());
                 espacoResult.setImagemCapa(imagemCapa);
             }    
             return espacoRepositorio.save(espacoResult);
@@ -128,7 +128,7 @@ public class EspacoServico {
         espaco.setPoliticaUso(espacoInput.getPoliticaUso());
         espaco.setSala(espacoInput.getSala());
         espaco.setAndar(espacoInput.getAndar());
-        espaco.setDisponibilidade(espacoInput.getDisponibilidade());
+        espaco.setDisponivel(espacoInput.getDisponivel());
         espaco.setDepartamento(espacoInput.getDepartamento());
         espaco.setContato(espacoInput.getContato());
         return espaco;

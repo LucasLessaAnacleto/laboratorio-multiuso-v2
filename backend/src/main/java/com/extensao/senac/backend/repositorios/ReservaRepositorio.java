@@ -1,5 +1,6 @@
 package com.extensao.senac.backend.repositorios;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,4 +11,5 @@ import com.extensao.senac.backend.modelos.Reserva;
 @Repository
 public interface ReservaRepositorio extends JpaRepository<Reserva, Long> {
     List<Reserva> findAllByEspacoId(String espacoId);
+    List<Reserva> findAllByDataReservaBetween(LocalDateTime inicio, LocalDateTime fim);
 }

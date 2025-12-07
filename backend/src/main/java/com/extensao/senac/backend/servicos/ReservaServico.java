@@ -1,5 +1,6 @@
 package com.extensao.senac.backend.servicos;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,6 +69,12 @@ public class ReservaServico {
         reservaResult.setDataCancelamento(reservaInput.getDataCancelamento() != null ? reservaInput.getDataCancelamento() : reservaResult.getDataCancelamento());
 
         return reservaRepositorio.save(reservaResult);
+    }
+
+    public List<Reserva> proximos7dias(){
+        LocalDateTime agora = LocalDateTime.now();
+        LocalDateTime daqui7 = agora.plusDays(7);
+        return reservaRepositorio.findAllByDataReservaBetween(agora, daqui7);
     }
 
     // private

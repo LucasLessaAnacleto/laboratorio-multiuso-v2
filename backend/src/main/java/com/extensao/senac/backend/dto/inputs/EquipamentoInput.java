@@ -7,6 +7,7 @@ public class EquipamentoInput {
     private String contatoResponsavel;
     private String patrimonio;
     private String anexoImagem;
+    private Boolean disponivel;
     private String espacoId;
 
     // Getters and Setters
@@ -65,6 +66,14 @@ public class EquipamentoInput {
     
     public void setEspacoId(String espacoId) {
         this.espacoId = espacoId;
+    }
+
+    public Boolean getDisponivel() {
+        return this.disponivel;
+    }
+
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
     }
 }
 

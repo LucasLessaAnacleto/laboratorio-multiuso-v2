@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.extensao.senac.backend.dto.inputs.ReservaInput;
 import com.extensao.senac.backend.modelos.Reserva;
+import com.extensao.senac.backend.servicos.DashboardServico;
 import com.extensao.senac.backend.servicos.ReservaServico;
 
 @Controller
@@ -26,6 +27,9 @@ public class ReservaController {
 
     @Autowired
     private ReservaServico reservaServico;
+
+    @Autowired
+    private DashboardServico dashboardServico;
 
     @GetMapping("/buscar")
     public ResponseEntity<List<Reserva>> buscarTodas() {
@@ -72,5 +76,15 @@ public class ReservaController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
+    }
+
+    @GetMapping("/proximos7dias")
+    public ResponseEntity<List<Reserva>> proximos7dias(){
+        return ResponseEntity.ok(reservaServico.proximos7dias());
+    }
+
+    @GetMapping("/dashboard")
+    public ResponseEntity<?> dashboard(){
+        return ResponseEntity.ok(dashboardServico.dashboard());
     }
 }

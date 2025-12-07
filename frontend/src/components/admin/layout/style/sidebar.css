@@ -38,16 +38,12 @@
 
 #admin-page .sidebar .menu-item:hover {
   background: rgba(0, 0, 0, 0.05);
-  /* border-left: 4px solid var(--fonte-destaque); */
 }
 
 #admin-page .sidebar .menu-item.active {
   background: rgba(0, 120, 255, 0.16);
-  /* background: rgba(0, 0, 0, 0.05); */
-  /* border-left: 4px solid #0066ff; */
   font-weight: 600;
   color: var(--fonte-sec);
-  /* color: var(--fonte-destaque); */
 }
 
 #admin-page .sidebar .menu-icon {

@@ -82,6 +82,7 @@ public class EquipamentoServico {
             equipamentoResult.setDescricao(equipamentoAtualizado.getDescricao() != null ? equipamentoAtualizado.getDescricao() : equipamentoResult.getDescricao());
             equipamentoResult.setContatoResponsavel(equipamentoAtualizado.getContatoResponsavel() != null ? equipamentoAtualizado.getContatoResponsavel() : equipamentoResult.getContatoResponsavel());
             equipamentoResult.setPatrimonio(equipamentoAtualizado.getPatrimonio() != null ? equipamentoAtualizado.getPatrimonio() : equipamentoResult.getPatrimonio());
+            equipamentoResult.setDisponivel(equipamentoAtualizado.getDisponivel() != null ? equipamentoAtualizado.getDisponivel() : equipamentoResult.getDisponivel());
     
             if(equipamentoInput.getAnexoImagem() != null && !equipamentoInput.getAnexoImagem().isEmpty()){
                 try {
@@ -112,6 +113,7 @@ public class EquipamentoServico {
         equipamento.setDescricao(equipamentoInput.getDescricao());
         equipamento.setContatoResponsavel(equipamentoInput.getContatoResponsavel());
         equipamento.setPatrimonio(equipamentoInput.getPatrimonio());
+        equipamento.setDisponivel(equipamentoInput.getDisponivel());
         return equipamento;
     }
 }

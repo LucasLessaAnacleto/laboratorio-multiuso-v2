@@ -20,7 +20,7 @@ import com.extensao.senac.backend.servicos.UsuarioService;
 
 @Controller
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class UsuariosController {
 
     @Autowired

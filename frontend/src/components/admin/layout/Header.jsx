@@ -1,12 +1,9 @@
 import { useState, useRef, useEffect, useContext } from "react";
-import IconMenu from "../../../assets/icon-menu.svg";
-import { UsuarioContext } from "../../../contexts/UsuarioContext.jsx";
+import IconMenu from "../../../assets/icon-menu.svg?react";
 
 import "./style/header.css";
 
-export function Header({ onToggleSidebar }) {
-    const usuario = {email: "", nome: "", fotoPerfil: ""}
-    console.log(useContext(UsuarioContext));
+export function Header({ onToggleSidebar, usuario }) {
     const [open, setOpen] = useState(false);
     const popupRef = useRef(null);
     const ftPerfilPadrao = 'https://lh3.googleusercontent.com/a/ACg8ocJZlvwirqzkaYy1OLeD1D7hGlJyXG8H-cNM2YYLgPkg5v0p8bR3=s288-c-no';
@@ -22,16 +19,16 @@ export function Header({ onToggleSidebar }) {
     }, []);
 
     return (
-        <header className="header">
+        <header className="header shadow">
             <div className="left">
                 <button className="menu-btn" onClick={onToggleSidebar}>
-                    {/* <IconMenu /> */}
+                    <IconMenu />
                 </button>
             </div>
 
             <div className="user-area" ref={popupRef}>
                 <div className="user-icon" onClick={() => setOpen((o) => !o)}>
-                    <img src={usuario.fotoPerfil ?? ftPerfilPadrao} alt="foto perfil" className="mini-foto-perfil" />
+                    <img src={usuario?.fotoPerfil || ftPerfilPadrao} alt="foto perfil" className="mini-foto-perfil" />
                 </div>
 
                 {open && (
@@ -44,7 +41,7 @@ export function Header({ onToggleSidebar }) {
                         <hr />
 
                         <button className="popup-btn">Editar perfil</button>
-                        <button className="popup-btn logout">Logout</button>
+                        <button className="popup-btn logout">Sair</button>
                     </div>
                 )}
             </div>

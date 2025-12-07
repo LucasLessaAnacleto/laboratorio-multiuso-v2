@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class Equipamento {
+public class    Equipamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +41,7 @@ public class Equipamento {
     private Espaco espaco;
 
     @Column
-    private boolean disponivel = true;
+    private Boolean disponivel = true;
 
     // Getters and Setters
 
@@ -114,12 +114,14 @@ public class Equipamento {
         return this.disponivel;
     }
 
-    public boolean getDisponivel() {
+    public Boolean getDisponivel() {
         return this.disponivel;
     }
 
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
+    public void setDisponivel(Boolean disponivel) {
+        if(disponivel != null){
+            this.disponivel = disponivel;
+        }
     }
 
 }

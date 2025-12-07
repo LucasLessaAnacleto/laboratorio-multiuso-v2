@@ -6,10 +6,11 @@ const api = axios.create({
 
 api.interceptors.request.use(config => {
   // const token = localStorage.getItem("token");
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjYWRhc3Ryb3MtYXBpIiwic3ViIjoibHVjYXNsZXNzYS5jb20iLCJleHAiOjE3NjUwNzU0MTN9.SxMyuggP-gkDU-e7AdIHXDGqWbFFviORE-I9JWY6M18';
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjYWRhc3Ryb3MtYXBpIiwic3ViIjoic2lzdGVtYS50ZXN0ZUB0ZXN0ZS5jb20iLCJleHAiOjE3NjUxNDY0NTV9.EaF9Kv_zXb6Gy8U41SKPA6Ujf0LvXZAQGyLpbPeNfwo';
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  // config.headers["Content-Type"] = 'Application/json';
   return config;
 });
 
@@ -18,9 +19,20 @@ api.interceptors.response.use(
     return response.data;
   },
   (error) => {
-    if(error.status == 403){
+    if(error.status == 403 || error.code == "ERR_NETWORK"){
         localStorage.removeItem("token");
-        // Não está autenticado
+        document.body.innerHTML += `
+                <div id="auth-expired-overlay">
+                    <div class="auth-expired-box">
+                        <h2>Sessão expirada</h2>
+                        <p>Você precisa fazer login novamente para continuar.</p>
+
+                        <button onclick="window.location.href='/login'">
+                            Fazer login
+                        </button>
+                    </div>
+                </div>
+            `;
     }
     return Promise.reject({erro: error.data, status: error.status});
   }

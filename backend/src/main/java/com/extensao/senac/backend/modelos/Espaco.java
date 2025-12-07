@@ -32,7 +32,7 @@ public class Espaco {
     private Anexo imagemCapa;
 
     @Column
-    private String disponibilidade;
+    private Boolean disponivel = true;
 
     @Column
     private boolean ativo = true;
@@ -100,12 +100,14 @@ public class Espaco {
         this.imagemCapa = imagemCapa;
     }
 
-    public String getDisponibilidade() {
-        return this.disponibilidade;
+    public Boolean getDisponivel() {
+        return this.disponivel;
     }
 
-    public void setDisponibilidade(String disponibilidade) {
-        this.disponibilidade = disponibilidade;
+    public void setDisponivel(Boolean disponivel) {
+        if(disponivel != null){
+            this.disponivel = disponivel;
+        }
     }
 
     public boolean isAtivo() {

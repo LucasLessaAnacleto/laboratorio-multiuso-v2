@@ -20,29 +20,50 @@
 }
 
 #admin-page main {
-    margin-left: var(--tam-sidebar);
-    width: calc(100% - var(--tam-sidebar));
-    padding: 20px;
-    height: 100%;
+  margin-left: var(--tam-sidebar);
+  width: calc(100% - var(--tam-sidebar));
+  min-height: calc(100vh - var(--tam-header));
+  transition: margin-left 0.3s ease-in-out;
+  position: relative;
 }
+
+/* Paginas */
+#content{
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
-  .sidebar {
+  :root{
+    --tam-sidebar: 200px;
+  }
+  #content{
+    overflow-y: auto;
+  }
+  #admin-page .sidebar {
     transform: translateX(-100%);
     position: fixed;
     z-index: 10;
   }
-
-  .sidebar.open {
-    transform: translateX(0);
+  #admin-page main{
+    margin-left: 0px;
+    width: 100vw;
   }
 
-  .admin-container {
+  #admin-page .sidebar.open {
+    transform: translateX(0);
+    max-width: 90%;
+  }
+
+  #admin-page .admin-container {
     margin-left: 0;
     width: 100%;
   }
 
-  .header {
+  #admin-page .header {
     justify-content: space-between;
   }
 }

@@ -4,13 +4,17 @@ import { createRoot } from 'react-dom/client'
 import { App } from './App.jsx'
 import { UsuarioProvider } from './contexts/UsuarioProvider.jsx';
 import './index.css'
+import { LoadingProvider } from "./contexts/LoadingProvider.jsx";
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <BrowserRouter>
       <UsuarioProvider>
-        <App />
+        <LoadingProvider>
+          <App />
+        </LoadingProvider>
       </UsuarioProvider>
     </BrowserRouter>
-  </StrictMode>,
+  // </StrictMode>
+  ,
 )
