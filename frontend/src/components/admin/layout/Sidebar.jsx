@@ -8,7 +8,7 @@ import './style/sidebar.css';
 
 export function Sidebar({ open }) {
     const menu = [
-        { Icon: IconHome, label: "Dashboard", to: "/admin" },
+        { Icon: IconHome, label: "Dashboard", to: "/admin/dashboard" },
         { Icon: IconCalendario, label: "Calendário", to: "/admin/calendario" },
         { Icon: IconEquipamento, label: "Equipamentos", to: "/admin/equipamentos" },
         { Icon: IconEspaco, label: "Espaços", to: "/admin/espacos" },

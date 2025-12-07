@@ -47,9 +47,6 @@
   border-right: none;
 }
 
-#content .table tbody {
-  background-color: #ffffff;
-}
 #content .table thead tr{
     background-color: var(--bg-disable) !important;
 }
@@ -57,10 +54,7 @@
 #content .table tr{
   border-bottom: 1px solid var(--border);
   transition: background-color 0.2s ease;
-}
-
-#content .table tr {
-  background-color: var(--bg-disable);
+  
 }
 
 #content .table tr:last-child {

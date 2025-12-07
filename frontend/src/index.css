@@ -15,8 +15,8 @@
   
   --bg-pri: #fff;
   --bg-sec: #D6F0FB;
-  --bg-terc: #8FD2EF;
   --bg-terc: #D9D9D9;
+  --bg-terc: #8FD2EF;
   
   --bg-button: #1E87DF;
   --bg-button-desc: #1e4ddf;
@@ -116,6 +116,19 @@ body{
 
 .shadow{
   box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.08);
+}
+
+.button{
+  background-color: var(--bg-terc);
+  padding: 1rem 3rem;
+  font-size: 1.5;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  color: var(--bg-pri);
+}
+.button:hover{
+  filter: brightness(.9);
 }
 
 @media screen and (max-width: 500px) {
