@@ -1,14 +1,9 @@
-import { Header } from "../../components/admin/Header.jsx";
-import { Sidebar } from "../../components/admin/Sidebar.jsx";
+import { Layout } from "../../components/admin/layout/Layout.jsx";
 
 export function Dashboard() {
-    document.title = 'ADM Dashboard - Laboratório Multiuso';
     return (
-        <div id="page-admin">
-            <Header />
-            <main className="main">
-                <Sidebar />
-            </main>
-        </div>
+        <Layout title="ADM Dashboard - Laboratório Multiuso">
+            Hello World
+        </Layout>
     )
 }

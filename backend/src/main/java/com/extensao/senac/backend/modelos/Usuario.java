@@ -2,9 +2,12 @@ package com.extensao.senac.backend.modelos;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Usuario {
@@ -21,8 +24,13 @@ public class Usuario {
     @Column(nullable = false)
     private String nome;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "foto_perfil", nullable = true)
+    private Anexo fotoPerfil;
+
+
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -30,7 +38,7 @@ public class Usuario {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -38,7 +46,7 @@ public class Usuario {
     }
 
     public String getSenha() {
-        return senha;
+        return this.senha;
     }
 
     public void setSenha(String senha) {
@@ -46,10 +54,18 @@ public class Usuario {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public Anexo getFotoPerfil() {
+        return this.fotoPerfil;
+    }
+
+    public void setFotoPerfil(Anexo fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }   
 }

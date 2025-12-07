@@ -1,0 +1,58 @@
+#admin-page .sidebar {
+  width: var(--tam-sidebar);
+  background: var(--bg-sec);
+  color: var(--fonte-pri);
+  padding: 20px 10px;
+  position: fixed;
+  top: var(--tam-header);
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+#admin-page .sidebar ul {
+  padding: 0;
+  margin: 0;
+}
+
+#admin-page .sidebar .menu-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 12px 20px;
+  margin: 4px 0;
+
+  color: var(--fonte-sec);
+  font-size: 1.5rem;
+  text-decoration: none;
+
+  border-left: 4px solid transparent;
+  transition: background 0.2s ease, border 0.2s ease;
+}
+
+#admin-page .sidebar .menu-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+  /* border-left: 4px solid var(--fonte-destaque); */
+}
+
+#admin-page .sidebar .menu-item.active {
+  background: rgba(0, 120, 255, 0.16);
+  /* background: rgba(0, 0, 0, 0.05); */
+  /* border-left: 4px solid #0066ff; */
+  font-weight: 600;
+  color: var(--fonte-sec);
+  /* color: var(--fonte-destaque); */
+}
+
+#admin-page .sidebar .menu-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.9;
+}

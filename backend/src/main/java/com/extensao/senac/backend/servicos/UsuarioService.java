@@ -2,13 +2,18 @@ package com.extensao.senac.backend.servicos;
 
 import java.util.Optional;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.extensao.senac.backend.dto.UsuarioCompletoOutput;
 import com.extensao.senac.backend.dto.UsuarioOutput;
+import com.extensao.senac.backend.dto.inputs.UsuarioAtualizadoInput;
 import com.extensao.senac.backend.dto.inputs.UsuarioInput;
 import com.extensao.senac.backend.jwt.TokenService;
+import com.extensao.senac.backend.modelos.Anexo;
 import com.extensao.senac.backend.modelos.Usuario;
 import com.extensao.senac.backend.repositorios.UsuarioRepositorio;
 
@@ -23,6 +28,9 @@ public class UsuarioService {
 
     @Autowired
     private TokenService tokenService;
+
+    @Autowired
+    private AnexoServico anexoServico;
 
     public UsuarioOutput cadastrarUsuario(UsuarioInput usuario) {
         Optional<Usuario> usuarioResult =
@@ -66,5 +74,23 @@ public class UsuarioService {
         }
 
         throw new RuntimeException("Senha invalida!");
+    }
+
+    public UsuarioCompletoOutput atualizarPerfil(UsuarioAtualizadoInput atualizaUsuario, Usuario usuario) throws RuntimeErrorException {
+        if(atualizaUsuario.getNome() != null && atualizaUsuario.getNome().length() > 0){
+            usuario.setNome(atualizaUsuario.getNome());
+        }
+        if(atualizaUsuario.getFotoPerfil() != null && atualizaUsuario.getFotoPerfil().length() > 0){
+            Anexo fotoPerfil = anexoServico.buscarAnexo(atualizaUsuario.getFotoPerfil());
+            usuario.setFotoPerfil(fotoPerfil);
+        }
+        UsuarioCompletoOutput usuarioOutput = new UsuarioCompletoOutput();
+        usuarioOutput.setEmail(usuario.getEmail());
+        usuarioOutput.setNome(usuario.getNome());
+        if(usuario.getFotoPerfil() != null ){
+            usuarioOutput.setFotoPerfil(usuario.getFotoPerfil().getNomeAnexo());
+        }
+        usuarioRepositorio.save(usuario);
+        return usuarioOutput;
     }
 }

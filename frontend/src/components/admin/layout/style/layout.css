@@ -1,0 +1,48 @@
+:root{
+  --tam-header: 54px;
+  --tam-sidebar: 240px;
+}
+#admin-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-pri);
+}
+
+.admin-container{
+    display: flex;
+    flex: 1;
+}
+
+#admin-page .admin-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#admin-page main {
+    margin-left: var(--tam-sidebar);
+    width: calc(100% - var(--tam-sidebar));
+    padding: 20px;
+    height: 100%;
+}
+/* Responsividade */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 10;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .admin-container {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .header {
+    justify-content: space-between;
+  }
+}

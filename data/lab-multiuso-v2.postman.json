@@ -10,7 +10,7 @@
 			"name": "anexo",
 			"item": [
 				{
-					"name": "novo",
+					"name": "upload",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -26,7 +26,7 @@
 								{
 									"key": "anexo",
 									"type": "file",
-									"src": "/E:/Git Lucas/WebSites/Projeto-The-Last-of-Us/src/images/instagram.svg"
+									"src": "/E:/Git Lucas/Senac/laboratorio-multiuso-v2/frontend/src/assets/naymar_foto_perfil.jpg"
 								}
 							]
 						},
@@ -57,7 +57,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:8080/anexo/download/instagram.svg",
+							"raw": "localhost:8080/anexo/download/naymar_foto_perfil.jpg",
 							"host": [
 								"localhost"
 							],
@@ -65,7 +65,7 @@
 							"path": [
 								"anexo",
 								"download",
-								"instagram.svg"
+								"naymar_foto_perfil.jpg"
 							]
 						}
 					},
@@ -707,7 +707,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/usuarios/cadastro",
+							"raw": "http://localhost:8080/usuarios/criar",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -715,7 +715,7 @@
 							"port": "8080",
 							"path": [
 								"usuarios",
-								"cadastro"
+								"criar"
 							]
 						}
 					},
@@ -745,6 +745,67 @@
 							"path": [
 								"usuarios",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Lucas Anacleto\",\r\n    \"fotoPerfil\": \"naymar_foto_perfil.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/usuarios/atualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"atualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/usuarios/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"me"
 							]
 						}
 					},
