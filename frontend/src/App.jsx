@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { Dashboard } from "./pages/admin/Dashboard.jsx";
 import { Equipamentos } from "./pages/admin/Equipamentos.jsx";
 import { EspacoDetalhes } from "./pages/publica/EspacoDetalhes.jsx";
+import CadastroEquipamento from "./pages/admin/CadastroEquipamento.jsx";
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
       {/* Rotas Admin */}
       <Route path="/admin/dashboard" element={<Dashboard />} />
       <Route path="/admin/equipamentos" element={<Equipamentos />} />
+      <Route path="/admin/cadastro-equipamento" element={<CadastroEquipamento />} />
 
 
       <Route path="/publica/espaco/:id" element={<EspacoDetalhes />} />

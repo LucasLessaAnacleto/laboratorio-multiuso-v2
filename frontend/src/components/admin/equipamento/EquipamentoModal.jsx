@@ -23,8 +23,17 @@ export function EquipamentoModal({ itemView, itemEdit, itemDel, mapper, actions 
         { nome: "espaco", label: "Espaço", tipo: "text", readonly: true },
         { nome: "disponivel", label: "Disponível", tipo: "switch" },
         { nome: "contatoResponsavel", label: "Contato do Responsável", tipo: "text" },
-        { nome: "imagem", label: "Imagem do Equipamento", tipo: "file" }
+        { nome: "anexoImagem", label: "Imagem do Equipamento", tipo: "file" }
     ];
+
+    /*private String nome;
+    private String categoria;
+    private String descricao;
+    private String contatoResponsavel;
+    private String patrimonio;
+    private String anexoImagem;
+    private Boolean disponivel;
+    private String espacoId;*/
 
     const camposView = [
         { nome: "id", label: "ID", tipo: "number", readonly: true },
@@ -34,8 +43,7 @@ export function EquipamentoModal({ itemView, itemEdit, itemDel, mapper, actions 
         { nome: "patrimonio", label: "Patrimônio", tipo: "text", readonly: true },
         { nome: "espaco", label: "Espaço", tipo: "text", readonly: true },
         { nome: "disponivel", label: "Disponível", tipo: "switch", readonly: true },
-        { nome: "contatoResponsavel", label: "Contato do Responsável", tipo: "text", readonly: true },
-        // { nome: "imagem", label: "Imagem do Equipamento", tipo: "file", readonly: true }
+        { nome: "contatoResponsavel", label: "Contato do Responsável", tipo: "text", readonly: true }
     ];
 
     return (

@@ -47,7 +47,7 @@
     font-size: 1.4rem;
 }
 
-.modal-overlay .modal-footer {
+.modal-footer {
     display: flex;
     justify-content: end;
     gap: 10px;
@@ -57,16 +57,16 @@
     background-color: var(--bg-pri);
 }
 
-.modal-overlay .btn {
+.btn {
     padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
     border: none;
 }
 
-.modal-overlay .btn.cancelar { background: #ccc; }
-.modal-overlay .btn.salvar { background: #4CAF50; color: white; }
-.modal-overlay .btn.deletar { background: #D9534F; color: white; }
+.btn.cancelar { background: #ccc; }
+.btn.salvar { background: #4CAF50; color: white; }
+.btn.deletar { background: #D9534F; color: white; }
 
 /* Switch básico */
 .modal-overlay .switch {
@@ -231,7 +231,7 @@
     margin-top: 20px;
 }
 
-.modal-overlay .modal-container .btn {
+ .btn {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -241,31 +241,31 @@
     transition: background-color 0.2s;
 }
 
-.modal-overlay .modal-container .btn.salvar {
+ .btn.salvar {
     background-color: #4a90e2;
     color: white;
 }
 
-.modal-overlay .modal-container .btn.salvar:hover {
+ .btn.salvar:hover {
     background-color: #3a7bc8;
 }
 
-.modal-overlay .modal-container .btn.cancelar {
+ .btn.cancelar {
     background-color: #f5f5f5;
     color: #333;
     border: 1px solid #ddd;
 }
 
-.modal-overlay .modal-container .btn.cancelar:hover {
+ .btn.cancelar:hover {
     background-color: #e9e9e9;
 }
 
-.modal-overlay .modal-container .btn.deletar {
+ .btn.deletar {
     background-color: #e74c3c;
     color: white;
 }
 
-.modal-overlay .modal-container .btn.deletar:hover {
+ .btn.deletar:hover {
     background-color: #c0392b;
 }
 
@@ -289,11 +289,11 @@
 }
 
 /* Estilização para o FileInput dentro do modal */
-.modal-overlay .modal-container .file-input {
+.file-input {
     margin-top: 4px;
 }
 
-.modal-overlay .modal-container .file-input label {
+.file-input label {
     display: block;
     margin-bottom: 4px;
     font-weight: 500;
@@ -301,7 +301,7 @@
     font-size: 14px;
 }
 
-.modal-overlay .modal-container .file-input-custom {
+.file-input-custom {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -316,22 +316,22 @@
     color: #333;
 }
 
-.modal-overlay .modal-container .file-input-custom:hover {
+.file-input-custom:hover {
     background-color: #e9ecef;
     border-color: #adb5bd;
 }
 
-.modal-overlay .modal-container .file-input-custom:active {
+.file-input-custom:active {
     background-color: #dee2e6;
 }
 
-.modal-overlay .modal-container .file-input-custom i {
+.file-input-custom i {
     font-size: 16px;
     color: #495057;
 }
 
 /* Esconder o input de arquivo nativo */
-.modal-overlay .modal-container .file-input input[type="file"] {
+.file-input input[type="file"] {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -344,7 +344,7 @@
 }
 
 /* Texto de descrição do arquivo */
-.modal-overlay .modal-container .file-input-descricao {
+.file-input-descricao {
     display: block;
     margin-top: 8px;
     font-size: 13px;
@@ -352,19 +352,19 @@
     line-height: 1.4;
 }
 
-.modal-overlay .modal-container .file-input-descricao b {
+.file-input-descricao b {
     font-weight: 600;
     color: #333;
     word-break: break-all;
 }
 
 /* Estado quando há arquivo selecionado */
-.modal-overlay .modal-container .file-input-has-file .file-input-custom {
+.file-input-has-file .file-input-custom {
     background-color: #e7f3ff;
     border-color: #4a90e2;
     color: #4a90e2;
 }
 
-.modal-overlay .modal-container .file-input-has-file .file-input-custom i {
+.file-input-has-file .file-input-custom i {
     color: #4a90e2;
 }

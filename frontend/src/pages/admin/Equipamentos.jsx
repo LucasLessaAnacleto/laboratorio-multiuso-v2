@@ -7,6 +7,7 @@ import { useUsuario } from "../../hooks/useUsuario";
 import { equipamentoService } from "../../services/equipamentoService.js";
 import { Modal } from "../../components/admin/Modal.jsx";
 import { EquipamentoModal } from "../../components/admin/equipamento/EquipamentoModal.jsx";
+import { useNavigate } from "react-router-dom";
 
 export function Equipamentos(){
     const { usuario } = useUsuario(); 
@@ -14,7 +15,7 @@ export function Equipamentos(){
     const [itemEdit, setItemEdit] = useState(null);
     const [itemView, setItemView] = useState(null);
     const [itemDel, setItemDel] = useState(null);
-
+    const navigate = useNavigate();
 
     const headers = {
         icon: "",
@@ -83,7 +84,7 @@ export function Equipamentos(){
         <Layout title="ADM Equipamentos - Laboratório Multiuso" usuario={usuario}>
             <div id="content" className="dashboard">
                 <PageHeader titulo={`Equipamentos`} >
-                    <Button>+ Equipamentos</Button>
+                    <Button onclick={() => navigate("/admin/cadastro-equipamento")}>+ Equipamentos</Button>
                 </PageHeader>
                 <CrudTable
                     dados={dadosEquipamento}
@@ -109,7 +110,18 @@ export function Equipamentos(){
                     disponivel: dado.disponivel ? true : false,
                     contatoResponsavel: dado.contatoResponsavel,
                     espaco: dado.espaco?.nome,
-                    imagem: dado.anexo?.nomeAnexo
+                    anexoImagem: dado.anexo?.nomeAnexo
+
+                    /*
+                        private String nome;
+                        private String categoria;
+                        private String descricao;
+                        private String contatoResponsavel;
+                        private String patrimonio;
+                        private String anexoImagem;
+                        private Boolean disponivel;
+                        private String espacoId;
+                    */
                 })}
                 itemEdit={itemEdit}
                 itemView={itemView}
