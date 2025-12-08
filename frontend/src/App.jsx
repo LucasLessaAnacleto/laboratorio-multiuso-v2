@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Dashboard } from "./pages/admin/Dashboard.jsx";
 import { Equipamentos } from "./pages/admin/Equipamentos.jsx";
+import { EspacoDetalhes } from "./pages/publica/EspacoDetalhes.jsx";
 
 export function App() {
   return (
@@ -15,6 +16,9 @@ export function App() {
       {/* Rotas Admin */}
       <Route path="/admin/dashboard" element={<Dashboard />} />
       <Route path="/admin/equipamentos" element={<Equipamentos />} />
+
+
+      <Route path="/publica/espaco/:id" element={<EspacoDetalhes />} />
 
       {/* 404 */}
       {/* Fahur: Página notfound*/}

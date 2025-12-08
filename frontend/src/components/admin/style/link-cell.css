@@ -1,0 +1,11 @@
+.link-cell {
+  color: var(--fonte-pri);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.link-cell:hover {
+  color: var(--bg-button);
+  text-decoration: underline;
+}

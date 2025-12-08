@@ -1,0 +1,370 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-overlay .modal-container {
+    background: white;
+    padding: 2.5rem;
+    width: 550px;
+    max-width: 100%;
+    border-radius: 12px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.modal-overlay .modal-container h2{
+    font-size: 2.2rem;
+    position: sticky;
+    top: 5px;
+    padding: 2rem 0;
+    background-color: var(--bg-pri);
+}
+
+.modal-overlay .modal-body {
+    /* margin-top: 1rem; */
+    overflow-y: auto;
+    max-height: 90%;
+}
+
+.modal-overlay .modal-field {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-overlay .modal-field label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 1.4rem;
+}
+
+.modal-overlay .modal-footer {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 20px;
+    position: sticky;
+    bottom: 5px;
+    background-color: var(--bg-pri);
+}
+
+.modal-overlay .btn {
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.modal-overlay .btn.cancelar { background: #ccc; }
+.modal-overlay .btn.salvar { background: #4CAF50; color: white; }
+.modal-overlay .btn.deletar { background: #D9534F; color: white; }
+
+/* Switch básico */
+.modal-overlay .switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.modal-overlay .switch input { display: none; }
+
+.modal-overlay .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background: #ccc;
+    border-radius: 24px;
+    transition: .2s;
+}
+
+.modal-overlay .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: .2s;
+}
+
+.modal-overlay input:checked + .slider {
+    background: #4CAF50;
+}
+
+.modal-overlay input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+
+/* -------------------------------------------------- */
+
+/* Estilização específica para os inputs dentro do modal */
+.modal-overlay .modal-container input[type="text"],
+.modal-overlay .modal-container input[type="number"],
+.modal-overlay .modal-container textarea,
+.modal-overlay .modal-container select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-overlay .modal-container input[type="text"]:focus,
+.modal-overlay .modal-container input[type="number"]:focus,
+.modal-overlay .modal-container textarea:focus,
+.modal-overlay .modal-container select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.modal-overlay .modal-container input[type="text"]:read-only,
+.modal-overlay .modal-container input[type="number"]:read-only,
+.modal-overlay .modal-container textarea:read-only {
+    background-color: #f5f5f5;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.modal-overlay .modal-container input[type="text"]:disabled,
+.modal-overlay .modal-container input[type="number"]:disabled,
+.modal-overlay .modal-container textarea:disabled,
+.modal-overlay .modal-container select:disabled {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Estilo para textarea */
+.modal-overlay .modal-container textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Estilo para select */
+.modal-overlay .modal-container select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 30px;
+}
+
+.modal-overlay .modal-container select:disabled {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+}
+
+/* Estilo para o switch */
+.modal-overlay .modal-container .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-top: 4px;
+}
+
+.modal-overlay .modal-container .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.modal-overlay .modal-container .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .3s;
+    border-radius: 24px;
+}
+
+.modal-overlay .modal-container .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+.modal-overlay .modal-container input:checked + .slider {
+    background-color: #4a90e2;
+}
+
+.modal-overlay .modal-container input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.modal-overlay .modal-container input:disabled + .slider {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+/* Estilo para os botões */
+.modal-overlay .modal-container .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-overlay .modal-container .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.modal-overlay .modal-container .btn.salvar {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.modal-overlay .modal-container .btn.salvar:hover {
+    background-color: #3a7bc8;
+}
+
+.modal-overlay .modal-container .btn.cancelar {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.modal-overlay .modal-container .btn.cancelar:hover {
+    background-color: #e9e9e9;
+}
+
+.modal-overlay .modal-container .btn.deletar {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.modal-overlay .modal-container .btn.deletar:hover {
+    background-color: #c0392b;
+}
+
+/* Estilo para labels */
+.modal-overlay .modal-container .modal-field label:first-child {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Espaçamento entre campos */
+.modal-overlay .modal-container .modal-field {
+    margin-bottom: 16px;
+}
+
+/* Estilo para o campo de arquivo (se necessário) */
+.modal-overlay .modal-container .file-input-container {
+    margin-top: 4px;
+}
+
+/* Estilização para o FileInput dentro do modal */
+.modal-overlay .modal-container .file-input {
+    margin-top: 4px;
+}
+
+.modal-overlay .modal-container .file-input label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.modal-overlay .modal-container .file-input-custom {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    color: #333;
+}
+
+.modal-overlay .modal-container .file-input-custom:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.modal-overlay .modal-container .file-input-custom:active {
+    background-color: #dee2e6;
+}
+
+.modal-overlay .modal-container .file-input-custom i {
+    font-size: 16px;
+    color: #495057;
+}
+
+/* Esconder o input de arquivo nativo */
+.modal-overlay .modal-container .file-input input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Texto de descrição do arquivo */
+.modal-overlay .modal-container .file-input-descricao {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.modal-overlay .modal-container .file-input-descricao b {
+    font-weight: 600;
+    color: #333;
+    word-break: break-all;
+}
+
+/* Estado quando há arquivo selecionado */
+.modal-overlay .modal-container .file-input-has-file .file-input-custom {
+    background-color: #e7f3ff;
+    border-color: #4a90e2;
+    color: #4a90e2;
+}
+
+.modal-overlay .modal-container .file-input-has-file .file-input-custom i {
+    color: #4a90e2;
+}

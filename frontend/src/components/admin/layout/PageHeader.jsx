@@ -1,7 +1,6 @@
 import "./style/page-header.css";
 
 export function PageHeader({titulo, subtitulo, children}) {
-    console.log("PAGE HEADER");
     return (
         <div className="page-header">
             <div className="page-header-container">

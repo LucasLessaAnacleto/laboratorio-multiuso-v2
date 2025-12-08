@@ -28,7 +28,7 @@ export function Header({ onToggleSidebar, usuario }) {
 
             <div className="user-area" ref={popupRef}>
                 <div className="user-icon" onClick={() => setOpen((o) => !o)}>
-                    <img src={usuario?.fotoPerfil || ftPerfilPadrao} alt="foto perfil" className="mini-foto-perfil" />
+                    <img src={usuario?.fotoPerfil ? `http://localhost:8080/anexo/download/${usuario.fotoPerfil}` : ftPerfilPadrao} alt="foto perfil" className="mini-foto-perfil" />
                 </div>
 
                 {open && (

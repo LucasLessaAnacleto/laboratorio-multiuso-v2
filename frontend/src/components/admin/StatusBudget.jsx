@@ -48,5 +48,3 @@ export function StatusBadge({ status, type = 'status' }) {
     </span>
   );
 };
-
-export default StatusBadge;

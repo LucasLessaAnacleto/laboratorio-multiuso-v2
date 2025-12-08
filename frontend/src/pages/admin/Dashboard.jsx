@@ -18,11 +18,6 @@ export function Dashboard() {
         qtdEspaco: 0,
         qtdEquipamento: 0
     });
-    
-    useEffect(() => {
-        setLoading(carregando);
-        console.log('carregando:',carregando);
-    }, [carregando, setLoading]);
 
     useEffect(() => {
         function formatter(dt) {
@@ -41,9 +36,7 @@ export function Dashboard() {
         }
         async function requestDataTable(){
             const dados = await reservaService.proximos7dias();
-            console.log('Proximos 7 dias',dados);
             setDadosReserva(dados.map(dados => {
-                console.log(dados);
                 return({
                 espaco: dados?.espaco?.nome,
                 data: parseDate(dados?.dataReserva).dataFormatada,

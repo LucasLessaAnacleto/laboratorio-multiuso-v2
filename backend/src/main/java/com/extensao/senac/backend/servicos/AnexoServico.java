@@ -24,9 +24,9 @@ public class AnexoServico {
         if(file.getSize() > 10_000_000){
             throw new RuntimeException("Limite de tamanho de arquivo excedido! Máximo: 10mb");
         }
-        if(anexoRepositorio.existsById(nomeAnexo)){
-            throw new RuntimeException("Arquivo "+nomeAnexo+" já existe!");
-        }
+        // if(anexoRepositorio.existsById(nomeAnexo)){
+        //     throw new RuntimeException("Arquivo "+nomeAnexo+" já existe!");
+        // }
         Anexo anexo = new Anexo();
         anexo.setNomeAnexo(nomeAnexo);
         anexo.setSize(file.getSize());

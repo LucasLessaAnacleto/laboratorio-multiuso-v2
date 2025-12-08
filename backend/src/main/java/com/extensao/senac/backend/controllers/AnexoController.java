@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.extensao.senac.backend.dto.inputs.AnexoOutput;
 import com.extensao.senac.backend.modelos.Anexo;
 import com.extensao.senac.backend.servicos.AnexoServico;
 
@@ -27,10 +28,10 @@ public class AnexoController {
     private AnexoServico anexoServico;
 
     @PostMapping("/upload/novo")
-    public ResponseEntity<String> novoAnexo(@RequestParam("anexo") MultipartFile file){
+    public ResponseEntity<?> novoAnexo(@RequestParam("anexo") MultipartFile file){
         try{
-            anexoServico.novoAnexo(file);
-            return ResponseEntity.ok("Arquivo anexado com sucesso!");
+            Anexo anexo = anexoServico.novoAnexo(file);
+            return ResponseEntity.ok(new AnexoOutput(anexo.getNomeAnexo()));
         }catch(RuntimeException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }catch(IOException e){

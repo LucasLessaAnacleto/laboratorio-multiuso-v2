@@ -74,6 +74,48 @@ body{
 #auth-expired-overlay button:hover {
     background: #003fcc;
 }
+/* Confirm Modal */
+#auth-expired-overlay .confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+#auth-expired-overlay .confirm-buttons .cancelar {
+    background: #ccc;
+    color: #333;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.2s ease;
+}
+
+#auth-expired-overlay .confirm-buttons .cancelar:hover {
+    background: #b5b5b5;
+}
+
+#auth-expired-overlay .confirm-buttons .deletar {
+    background: #e04646;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.2s ease;
+}
+
+#auth-expired-overlay .confirm-buttons .deletar:hover {
+    background: #c53030;
+}
+
+/* animação opcional */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
 
 /* loading */
 .loading-overlay {
