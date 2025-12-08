@@ -12,17 +12,25 @@ export function Modal({
     onCancelar,
     onDeletar,
 }) {
-    const [form, setForm] = useState(null);
+    const [formModal, setFormModal] = useState({}); // dados editáveis do modal
+
     const [carregamento, setCarregamento] = useState(true);
 
     useEffect(() => {
-        setForm(dadosIniciais);
-        setCarregamento(false);
-    }, [dadosIniciais, aberto]);
+        if (aberto) {
+            setFormModal(dadosIniciais);
+            setCarregamento(false);
+        }
+    }, [aberto, dadosIniciais]);
+
 
     function alterarCampo(nome, valor) {
-        setForm(prev => ({ ...prev, [nome]: valor }));
+        setFormModal(prev => ({ ...prev, [nome]: valor }));
     }
+
+    useEffect(() => {
+        console.log('formModal',formModal)
+    },[formModal])
 
 
     if (!aberto) return null;
@@ -43,7 +51,7 @@ export function Modal({
                             {(campo.tipo === "text" || campo.tipo === "number") && (
                                 <input
                                     type={campo.tipo}
-                                    value={form.modal[campo.nome] || ""}
+                                    value={formModal[campo.nome] || ""}
                                     readOnly={campo.readonly}
                                     onChange={e => alterarCampo(campo.nome, e.target.value)}
                                 />
@@ -51,7 +59,7 @@ export function Modal({
 
                             {campo.tipo === "textarea" && (
                                 <textarea
-                                    value={form.modal[campo.nome] || ""}
+                                    value={formModal[campo.nome] || ""}
                                     readOnly={campo.readonly}
                                     onChange={e => alterarCampo(campo.nome, e.target.value)}
                                 />
@@ -60,7 +68,7 @@ export function Modal({
                             {/* SELECT */}
                             {campo.tipo === "select" && (
                                 <select
-                                    value={form.modal[campo.nome] || ""}
+                                    value={formModal[campo.nome] || ""}
                                     disabled={campo.readonly}
                                     onChange={e => alterarCampo(campo.nome, e.target.value)}
                                 >
@@ -76,7 +84,7 @@ export function Modal({
                                 <label className="switch">
                                     <input 
                                         type="checkbox"
-                                        checked={!!form.modal[campo.nome]}
+                                        checked={!!formModal[campo.nome]}
                                         disabled={campo.readonly}
                                         onChange={e => alterarCampo(campo.nome, e.target.checked)}
                                     />
@@ -112,7 +120,7 @@ export function Modal({
                     )}
 
                     {onSalvar && (
-                        <button className="btn salvar" onClick={() => onSalvar(form)}>
+                        <button className="btn salvar" onClick={() => onSalvar(formModal)}>
                             Salvar
                         </button>
                     )}

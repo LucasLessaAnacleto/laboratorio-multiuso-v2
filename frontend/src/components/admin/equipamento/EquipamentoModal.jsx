@@ -1,7 +1,7 @@
 import { ConfirmModal } from "../ConfirmModal";
 import { Modal } from "../Modal";
 
-export function EquipamentoModal({ itemView, itemEdit, itemDel, actions = { view: {}, edit: {}, del: {} } }){
+export function EquipamentoModal({ itemView, itemEdit, itemDel, mapper, actions = { view: {}, edit: {}, del: {} } }){
     const dadosIniciaisEquipamento = {
         id: 2,
         nome: "Equipamento de Informática",
@@ -43,7 +43,7 @@ export function EquipamentoModal({ itemView, itemEdit, itemDel, actions = { view
             {itemView && <Modal
                 aberto={true}
                 titulo="Visualzar Equipamento"
-                dadosIniciais={itemView}
+                dadosIniciais={mapper(itemView)}
                 campos={camposView}
                 onCancelar={() => actions.view.oncancelar && actions.view.oncancelar(itemView)}
             />}
@@ -51,9 +51,9 @@ export function EquipamentoModal({ itemView, itemEdit, itemDel, actions = { view
             {itemEdit && <Modal
                 aberto={true}
                 titulo="Editar Equipamento"
-                dadosIniciais={itemEdit}
+                dadosIniciais={mapper(itemEdit)}
                 campos={camposEditar}
-                onSalvar={() => actions.edit.onsalvar && actions.edit.onsalvar(itemEdit)}
+                onSalvar={(formModal) => actions.edit.onsalvar && actions.edit.onsalvar(formModal)}
                 onCancelar={() => actions.edit.oncancelar && actions.edit.oncancelar(itemEdit)}
                 onDeletar={() => actions.edit.ondeletar && actions.edit.ondeletar(itemEdit)}
             />}

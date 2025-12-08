@@ -44,7 +44,7 @@ export function Equipamentos(){
         edit: {
             oncancelar: () => setItemEdit(null),
             onsalvar: async(form) => {
-                console.log("salvar", JSON.stringify(form.modal,null,2))
+                console.log("salvar", JSON.stringify(form,null,2))
             },
             ondeletar: (item) => setItemDel(item)
             
@@ -71,17 +71,6 @@ export function Equipamentos(){
                     espaco: dado.espaco?.nome,
                     status: dado.disponivel ? 'disponível' : 'indisponível',
                     url: `/publica/espaco/${dado?.espaco?.id}`
-                },
-                modal: {
-                    id: dado.id,
-                    nome: dado.nome,
-                    categoria: dado.categoria,
-                    descricao: dado.descricao,
-                    patrimonio: dado.patrimonio,
-                    disponivel: dado.disponivel ? true : false,
-                    contatoResponsavel: dado.contatoResponsavel,
-                    espaco: dado.espaco?.nome,
-                    imagem: dado.anexo?.nomeAnexo
                 },
                 ...dado
             })));
@@ -111,6 +100,17 @@ export function Equipamentos(){
                 />
             </div>
             <EquipamentoModal 
+                mapper={(dado) => ({
+                    id: dado.id,
+                    nome: dado.nome,
+                    categoria: dado.categoria,
+                    descricao: dado.descricao,
+                    patrimonio: dado.patrimonio,
+                    disponivel: dado.disponivel ? true : false,
+                    contatoResponsavel: dado.contatoResponsavel,
+                    espaco: dado.espaco?.nome,
+                    imagem: dado.anexo?.nomeAnexo
+                })}
                 itemEdit={itemEdit}
                 itemView={itemView}
                 itemDel={itemDel}
