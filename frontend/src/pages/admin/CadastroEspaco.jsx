@@ -5,11 +5,9 @@ import { Layout } from '../../components/admin/layout/Layout';
 import { PageHeader } from '../../components/admin/layout/PageHeader';
 import { useUsuario } from '../../hooks/useUsuario';
 import { Button } from '../../components/admin/Button';
-import { useNavigate } from "react-router-dom";
-import { ModalField } from '../../components/admin/ModalField';
 
+import { ModalField } from '../../components/admin/ModalField';
 import './style/cadastro-equipamento.css';
-import { equipamentoService } from '../../services/equipamentoService';
 
 export function CadastroEquipamento() {
     const { usuario } = useUsuario();  
@@ -17,7 +15,6 @@ export function CadastroEquipamento() {
     function alterarCampo(nome, valor) {
         setEquipamento(prev => ({ ...prev, [nome]: valor }));
     }
-    const navigate = useNavigate();
     /*
     {
     nome: "",
@@ -33,12 +30,6 @@ export function CadastroEquipamento() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Equipamento cadastrado:', equipamento);
-        equipamentoService.criar(equipamento).then(() => {
-            alert('Equipamento cadastrado com sucesso!');
-            navigate(-1);
-        }).catch((err) => {
-            alert( 'Erro ao cadastrar equipamento, verifique os campos e tente novamente.');
-        });
     };
 
   return (
@@ -65,7 +56,7 @@ export function CadastroEquipamento() {
                     hint: "Ex: Microscópio",
                   }}
                   value={equipamento.nome}
-                  onChange={valor => alterarCampo("nome", valor)}
+                  onChange={valor => atualizarCampo("nome", valor)}
                 />
 
                 <ModalField
@@ -75,8 +66,8 @@ export function CadastroEquipamento() {
                     label: "Categoria do equipamento",
                     hint: "Ex: TF-200 - Techlab",
                   }}
-                  value={equipamento.categoria}
-                  onChange={valor => alterarCampo("categoria", valor)}
+                  value={equipamento.modeloFabricante}
+                  onChange={valor => atualizarCampo("modeloFabricante", valor)}
                 />
 
                 <ModalField
@@ -87,8 +78,8 @@ export function CadastroEquipamento() {
                     hint: "Ex: Para análises microscópicas",
                     rows: 4,
                   }}
-                  value={equipamento.descricao}
-                  onChange={valor => alterarCampo("descricao", valor)}
+                  value={equipamento.observacoes}
+                  onChange={valor => atualizarCampo("observacoes", valor)}
                 />
 
                 <div className="form-row">
@@ -101,7 +92,7 @@ export function CadastroEquipamento() {
                         hint: "Ex: Carlos Mendes",
                       }}
                       value={equipamento.responsavel}
-                      onChange={valor => alterarCampo("responsavel", valor)}
+                      onChange={valor => atualizarCampo("responsavel", valor)}
                     />
                   </div>
 
@@ -113,50 +104,58 @@ export function CadastroEquipamento() {
                         label: "Contato Responsável",
                         hint: "Ex: carlos@senac.com.br",
                       }}
-                      value={equipamento.contatoResponsavel}
-                      onChange={valor => alterarCampo("contatoResponsavel", valor)}
+                      value={equipamento.contato}
+                      onChange={valor => atualizarCampo("contato", valor)}
                     />
                   </div>
+                </div>
+              </section>
+
+              <div className="section-divider"></div>
+
+              {/* Seção 2: Localização */}
+              <section className="form-section">
+                <div className="section-header">
+                  <h2>Localização</h2>
                 </div>
 
                 <ModalField
                   campo={{
-                    nome: "patrimonio",
+                    nome: "andar",
                     tipo: "text",
-                    label: "Nº Patrimônio",
+                    label: "Andar",
                     hint: "Ex: 1º Andar",
                   }}
-                  value={equipamento.patrimonio}
-                  onChange={valor => alterarCampo("patrimonio", valor)}
+                  value={equipamento.andar}
+                  onChange={valor => atualizarCampo("andar", valor)}
                 />
 
                 <ModalField
                   campo={{
-                    nome: "espacoId",
-                    tipo: "select",
-                    label: "Espaço",
+                    nome: "departamento",
+                    tipo: "text",
+                    label: "Departamento/Unidade",
                     hint: "Ex: Engenharia",
-                    opcoes: [{value: "836c92b4-23ac-449d-b127-7a12051fae53", label: "Engenharia"}]
                   }}
-                  value={equipamento.espacoId}
-                  onChange={valor => alterarCampo("espacoId", valor)}
+                  value={equipamento.departamento}
+                  onChange={valor => atualizarCampo("departamento", valor)}
                 />
 
                 <ModalField
                   campo={{
-                    nome: "anexoImagem",
+                    nome: "arquivoNome",
                     tipo: "file",
                     label: "Anexo (opcional)",
                     accept: ".pdf,.doc,.docx,.jpg,.png",
                   }}
-                  value={equipamento.anexoImagem}
-                  onChange={valor => alterarCampo("anexoImagem", valor)}
+                  value={equipamento.arquivoNome}
+                  onChange={valor => atualizarCampo("arquivoNome", valor)}
                 />
             </section>
 
             {/* Botões de Ação */}
             <div className="modal-footer">
-                <button className="btn cancelar" type='reset' onClick={() => navigate(-1)}>Cancelar</button>
+                <button className="btn cancelar">Cancelar</button>
                 <button className="btn salvar" type='submit'>Salvar</button>
             </div>
             </form>

@@ -60,7 +60,8 @@ public class EquipamentoServico {
             throw new RuntimeException("O patrimônio do equipamento é obrigatório.");
         }
         Espaco espaco = espacoServico.buscar(equipamentoInput.getEspacoId());
-        equipamento.setEspaco(espaco);        
+        equipamento.setEspaco(espaco); 
+        equipamento.setDisponivel(true);       
         if(equipamentoInput.getAnexoImagem() != null && !equipamentoInput.getAnexoImagem().isEmpty()){
             try {
                 Anexo anexoImagem = anexoServico.buscarAnexo(equipamentoInput.getAnexoImagem());

@@ -33,9 +33,18 @@ export function Equipamentos(){
         status: "status",
         acao: "action"
     }
+    const mapper = (dado) => ({
+        icon: "",
+        id: dado.id,
+        equipamento: dado.nome,
+        codigo: dado.patrimonio,
+        espaco: dado.espaco?.nome,
+        status: dado.disponivel ? 'disponível' : 'indisponível',
+        acao: ""
+    });
     const handleEdit = (item) => setItemEdit(item);
     const handleDelete = (item) => setItemDel(item);
-    const handleView = (item) => {console.log('handleView', item);setItemView(item)};
+    const handleView = (item) => setItemView(item);
     const handlePageChange = console.log;
 
     const actions = {
@@ -45,7 +54,17 @@ export function Equipamentos(){
         edit: {
             oncancelar: () => setItemEdit(null),
             onsalvar: async(form) => {
-                console.log("salvar", JSON.stringify(form,null,2))
+                console.log("salvar", JSON.stringify(form,null,2));
+                const atualizado = await equipamentoService.atualizar(form.id, form).catch(() => {
+                    alert("Erro ao atualizar equipamento");
+                    return;
+                });
+                if(!atualizado){
+                    alert("Erro ao atualizar equipamento");    
+                    return;
+                }
+                setDadosEquipamento((dados) => dados.map(dado => dado.id === atualizado.id ? atualizado : dado));
+                setItemEdit(null);
             },
             ondeletar: (item) => setItemDel(item)
             
@@ -63,19 +82,7 @@ export function Equipamentos(){
     useEffect(() => {
         async function requestEquipamentos(){
             const data = await equipamentoService.listar(); 
-            
-            setDadosEquipamento(data.map(dado => ({
-                form: {
-                    id: dado.id,
-                    equipamento: dado.nome,
-                    codigo: dado.patrimonio,
-                    espaco: dado.espaco?.nome,
-                    status: dado.disponivel ? 'disponível' : 'indisponível',
-                    url: `/publica/espaco/${dado?.espaco?.id}`
-                },
-                ...dado
-            })));
-            /* */
+            setDadosEquipamento(data);
         }
         requestEquipamentos();
     },[])
@@ -87,6 +94,7 @@ export function Equipamentos(){
                     <Button onclick={() => navigate("/admin/cadastro-equipamento")}>+ Equipamentos</Button>
                 </PageHeader>
                 <CrudTable
+                    mapper={mapper}
                     dados={dadosEquipamento}
                     headers={headers}
                     columnTypes={columnTypes}
@@ -110,8 +118,7 @@ export function Equipamentos(){
                     disponivel: dado.disponivel ? true : false,
                     contatoResponsavel: dado.contatoResponsavel,
                     espaco: dado.espaco?.nome,
-                    anexoImagem: dado.anexo?.nomeAnexo
-
+                    anexoImagem: dado.imagem?.nomeAnexo
                     /*
                         private String nome;
                         private String categoria;

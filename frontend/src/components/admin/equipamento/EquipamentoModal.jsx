@@ -2,17 +2,6 @@ import { ConfirmModal } from "../ConfirmModal";
 import { Modal } from "../Modal";
 
 export function EquipamentoModal({ itemView, itemEdit, itemDel, mapper, actions = { view: {}, edit: {}, del: {} } }){
-    const dadosIniciaisEquipamento = {
-        id: 2,
-        nome: "Equipamento de Informática",
-        categoria: "Aparelho Eletrônico",
-        descricao: "Computador desktop de mesa 256gb",
-        patrimonio: "1235435634",
-        disponivel: true,
-        contatoResponsavel: "",
-        espaco: "Laboratório Moda Senac",
-        imagem: null
-    };
 
     const camposEditar = [
         { nome: "id", label: "ID", tipo: "number", readonly: true },

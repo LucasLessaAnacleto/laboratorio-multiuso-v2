@@ -7,6 +7,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3307/lab_multiuso?sessionVariables=cte_max_recursion_depth=5000
+    url: jdbc:mysql://localhost:3306/lab_multiuso
     username: root
-    password: 3307
+    password: 

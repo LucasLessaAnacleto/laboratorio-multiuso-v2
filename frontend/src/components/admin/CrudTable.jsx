@@ -2,8 +2,10 @@ import { StatusBadge } from './StatusBudget';
 import { ActionButtons } from './ActionButtons';
 import { LinkCell } from './LinkCell';
 import './style/crud-table.css';
+import { useEffect, useState } from 'react';
 
 export function CrudTable({ 
+  mapper,
   children, 
   dados = [], 
   headers = {},
@@ -17,20 +19,20 @@ export function CrudTable({
   itemsPerPage = 10,
   onPageChange
 }) {
-  
-  // Configuração padrão de tipos de coluna
+  const [tableDados, setTableDados] = useState([]);
   const defaultColumnTypes = {
     status: 'status',
     acao: 'action',
     ação: 'action',
     icone: 'icon'
   };
+  useEffect(() => {
+    setTableDados(dados.map(mapper));
+  }, [dados]);
 
   const types = { ...defaultColumnTypes, ...columnTypes };
 
-  // Renderiza o conteúdo da célula baseado no tipo
   const renderCellContent = (prop, value, item, index) => {
-    // console.log(item);
     if (types[prop] === 'status' || prop.toLowerCase().includes('status')) {
       return <StatusBadge status={value} />;
     }
@@ -66,6 +68,7 @@ export function CrudTable({
     // por padrão apresenta apenas o conteudo
     return value || "---";
   };
+  if(tableDados.length > 0)
   return (
     <div className="table shadow">
       {children && <h2 className="table-titulo">{children}</h2>}
@@ -88,7 +91,8 @@ export function CrudTable({
                     key={"coluna-" + i + "-" + j} 
                     className={`${types[prop] || ''} ${prop.toLowerCase().includes('status') ? 'status-column' : ''}`}
                   >
-                    {renderCellContent(prop, item.form[prop], item, j)}
+                    
+                    {renderCellContent(prop, tableDados[i][prop], item, j)}
                   </td>
                 ))}
               </tr>
